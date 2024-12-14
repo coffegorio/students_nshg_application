@@ -135,24 +135,46 @@ class AuthScreenVC: UIViewController {
         guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
             // Отображаем ошибку, если поля пустые
-            AlertManager.showSignInErrorAlert(on: self)
+            AlertManager.showInvalidEmailAlert(on: self) // Или другой алерт, если нужно
             return
         }
         
         let loginRequest = LoginUserRequest(email: email, password: password)
         
         // Вызов метода signInUser через экземпляр AuthService
-        authService.signInUser(with: loginRequest) { error in
+        authService.signInUser(with: loginRequest) { [weak self] error in
+            guard let self = self else { return }
+            
             if let error = error {
                 // Ошибка входа
                 AlertManager.showSignInErrorAlert(on: self, with: error)
             } else {
                 // Успешный вход
                 print("Пользователь успешно вошел в аккаунт")
-                // Здесь можно добавить переход на главный экран или другую логику
+                self.updateTabBarForLoggedInUser()
             }
         }
     }
+
+    private func updateTabBarForLoggedInUser() {
+        guard let tabBarController = self.view.window?.rootViewController as? UITabBarController else {
+            print("Не удалось получить TabBarController")
+            return
+        }
+        
+        let profileScreenVC = ProfileScreenVC()
+        profileScreenVC.tabBarItem.image = UIImage(systemName: "person.crop.circle")
+        profileScreenVC.tabBarItem.selectedImage = UIImage(systemName: "person.crop.circle.fill")
+        
+        // Обновляем второй таб
+        var viewControllers = tabBarController.viewControllers ?? []
+        if viewControllers.count > 1 {
+            viewControllers[1] = profileScreenVC
+            tabBarController.viewControllers = viewControllers
+        }
+    }
+
+    
 
     @objc private func showRegistrationScreen() {
         let registerVC = RegistrationScreenVC()

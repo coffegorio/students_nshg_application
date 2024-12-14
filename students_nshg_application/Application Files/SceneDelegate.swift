@@ -16,26 +16,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = UIWindow(windowScene: windowScene)
         
-        let tabbarController = UITabBarController()
-        tabbarController.tabBar.backgroundImage = UIImage()
-        tabbarController.tabBar.tintColor = Styles.Colors.appThemeBlackColor
-        tabbarController.tabBar.unselectedItemTintColor = Styles.Colors.appThemeGrayColor
-        
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.backgroundImage = UIImage()
+        tabBarController.tabBar.tintColor = Styles.Colors.appThemeBlackColor
+        tabBarController.tabBar.unselectedItemTintColor = Styles.Colors.appThemeGrayColor
+
+        // Первый таб: Новости
         let newsScreenVC = NewsScreenVC()
         newsScreenVC.tabBarItem.image = UIImage(systemName: "newspaper")
         newsScreenVC.tabBarItem.selectedImage = UIImage(systemName: "newspaper.fill")
-        
-        let profileScreenVC = AuthScreenVC()
-        profileScreenVC.tabBarItem.image = UIImage(systemName: "person")
-        profileScreenVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
-        
+
+        // Второй таб: Авторизация или профиль
+        let secondTabVC: UIViewController
+        if AuthService.shared.isUserLoggedIn() {
+            // Если пользователь авторизован, показываем профиль
+            let profileScreenVC = ProfileScreenVC()
+            profileScreenVC.tabBarItem.image = UIImage(systemName: "person.crop.circle")
+            profileScreenVC.tabBarItem.selectedImage = UIImage(systemName: "person.crop.circle.fill")
+            secondTabVC = profileScreenVC
+        } else {
+            // Если пользователь не авторизован, показываем авторизацию
+            let authScreenVC = AuthScreenVC()
+            authScreenVC.tabBarItem.image = UIImage(systemName: "person")
+            authScreenVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
+            secondTabVC = authScreenVC
+        }
+
+        // Третий таб: Настройки
         let settingsScreenVC = SettingsScreenVC()
         settingsScreenVC.tabBarItem.image = UIImage(systemName: "gearshape")
         settingsScreenVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
+
+        // Устанавливаем контроллеры таббара
+        tabBarController.viewControllers = [newsScreenVC, secondTabVC, settingsScreenVC]
         
-        tabbarController.viewControllers = [newsScreenVC, profileScreenVC, settingsScreenVC]
-        
-        self.window?.rootViewController = tabbarController
+        self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }
 }
