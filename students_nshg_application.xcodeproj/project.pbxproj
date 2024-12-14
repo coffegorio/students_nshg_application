@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E867EECC2D0B9DC800A5D127 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E867EECB2D0B9DC800A5D127 /* SnapKit */; };
+		E867EECF2D0B9E1D00A5D127 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E867EECE2D0B9E1D00A5D127 /* FirebaseAuth */; };
+		E867EED12D0B9E1D00A5D127 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E867EED02D0B9E1D00A5D127 /* FirebaseCore */; };
+		E867EED32D0B9E1D00A5D127 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E867EED22D0B9E1D00A5D127 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E867EEB22D0B9D6600A5D127 /* students_nshg_application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = students_nshg_application.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -14,7 +21,7 @@
 		E867EEC42D0B9D6800A5D127 /* Exceptions for "students_nshg_application" folder in "students_nshg_application" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				"Application Files/Info.plist",
 			);
 			target = E867EEB12D0B9D6600A5D127 /* students_nshg_application */;
 		};
@@ -36,6 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E867EECC2D0B9DC800A5D127 /* SnapKit in Frameworks */,
+				E867EED32D0B9E1D00A5D127 /* FirebaseFirestore in Frameworks */,
+				E867EED12D0B9E1D00A5D127 /* FirebaseCore in Frameworks */,
+				E867EECF2D0B9E1D00A5D127 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +89,10 @@
 			);
 			name = students_nshg_application;
 			packageProductDependencies = (
+				E867EECB2D0B9DC800A5D127 /* SnapKit */,
+				E867EECE2D0B9E1D00A5D127 /* FirebaseAuth */,
+				E867EED02D0B9E1D00A5D127 /* FirebaseCore */,
+				E867EED22D0B9E1D00A5D127 /* FirebaseFirestore */,
 			);
 			productName = students_nshg_application;
 			productReference = E867EEB22D0B9D6600A5D127 /* students_nshg_application.app */;
@@ -107,6 +122,10 @@
 			);
 			mainGroup = E867EEA92D0B9D6600A5D127;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E867EECA2D0B9DC800A5D127 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E867EECD2D0B9E1D00A5D127 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E867EEB32D0B9D6600A5D127 /* Products */;
 			projectDirPath = "";
@@ -147,12 +166,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D5L5LFMXL5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = students_nshg_application/Info.plist;
+				INFOPLIST_FILE = "students_nshg_application/Application Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -160,9 +179,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.students-nshg-application";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -175,12 +198,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D5L5LFMXL5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = students_nshg_application/Info.plist;
+				INFOPLIST_FILE = "students_nshg_application/Application Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -188,9 +211,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.students-nshg-application";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -335,6 +362,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E867EECA2D0B9DC800A5D127 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		E867EECD2D0B9E1D00A5D127 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E867EECB2D0B9DC800A5D127 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E867EECA2D0B9DC800A5D127 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E867EECE2D0B9E1D00A5D127 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E867EECD2D0B9E1D00A5D127 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E867EED02D0B9E1D00A5D127 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E867EECD2D0B9E1D00A5D127 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E867EED22D0B9E1D00A5D127 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E867EECD2D0B9E1D00A5D127 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E867EEAA2D0B9D6600A5D127 /* Project object */;
 }
