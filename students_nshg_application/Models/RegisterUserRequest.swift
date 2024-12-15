@@ -16,4 +16,5 @@ struct RegisterUserRequest {
     let currentLessonID: Int
     let instrument: String
     let createdAt: Date
+    let role: String = "student"
 }

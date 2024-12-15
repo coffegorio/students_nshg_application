@@ -25,6 +25,7 @@ class AuthService {
         let currentLessonID = userRequest.currentLessonID
         let instrument = userRequest.instrument
         let createdAt = userRequest.createdAt
+        let role = userRequest.role
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -48,7 +49,8 @@ class AuthService {
                     "stageID": stageID,
                     "currentLessonID": currentLessonID,
                     "instrument": instrument,
-                    "createdAt": Timestamp(date: userRequest.createdAt)
+                    "createdAt": Timestamp(date: userRequest.createdAt),
+                    "role": role
                 ]) { error in
                     if let error = error {
                         completion(false, error)
@@ -91,6 +93,29 @@ class AuthService {
     /// Проверка на авторизованного пользователя
     public func isUserLoggedIn() -> Bool {
         return Auth.auth().currentUser != nil
+    }
+    
+    /// Получение данных текущего пользователя
+    public func fetchUserData(completion: @escaping (Result<[String: Any], Error>) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(.failure(NSError(domain: "", code: 401, userInfo: [NSLocalizedDescriptionKey: "Пользователь не авторизован"])))
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("users").document(uid).getDocument { document, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = document?.data() else {
+                completion(.failure(NSError(domain: "", code: 404, userInfo: [NSLocalizedDescriptionKey: "Данные пользователя не найдены"])))
+                return
+            }
+            
+            completion(.success(data))
+        }
     }
     
 }
