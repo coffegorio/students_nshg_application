@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+//import Combine
 
 class AuthScreenVC: UIViewController {
     
@@ -32,6 +33,8 @@ class AuthScreenVC: UIViewController {
         stackView.spacing = 5
         return stackView
     }()
+    
+//    private var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +44,16 @@ class AuthScreenVC: UIViewController {
         setupActions()
         hideKeyboardWhenTappedAround()
         setupKeyboardObservers()
+//        bindTextFieldsToButtonState()
     }
 
     private func setupUI() {
         view.backgroundColor = Styles.Colors.appThemeWhiteColor
-
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         scrollView.delaysContentTouches = false
-
+        
         [
             logoImage,
             titleBackground,
@@ -60,9 +64,12 @@ class AuthScreenVC: UIViewController {
             authButton,
             buttonStackView
         ].forEach { contentView.addSubview($0) }
-
+        
         buttonStackView.addArrangedSubview(moveToRegistrationScreenButton)
         buttonStackView.addArrangedSubview(moveToForgotPasswordScreenButton)
+        
+//        authButton.isEnabled = false
+//        authButton.alpha = 0.8 // Визуальная индикация недоступности
     }
 
     private func setupConstraints() {
@@ -128,8 +135,31 @@ class AuthScreenVC: UIViewController {
 
     private func setupActions() {
         moveToRegistrationScreenButton.addTarget(self, action: #selector(showRegistrationScreen), for: .touchUpInside)
+        moveToForgotPasswordScreenButton.addTarget(self, action: #selector(showForgotPasswordScreen), for: .touchUpInside)
         authButton.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
     }
+    
+//    private func bindTextFieldsToButtonState() {
+//        // Создаем Publishers для текстовых полей
+//        let emailPublisher = emailTextField.publisher(for: \.text)
+//            .map { $0?.isEmpty == false }
+//            .replaceNil(with: false)
+//        
+//        let passwordPublisher = passwordTextField.publisher(for: \.text)
+//            .map { $0?.isEmpty == false }
+//            .replaceNil(with: false)
+//        
+//        // Комбинируем значения Publishers
+//        Publishers.CombineLatest(emailPublisher, passwordPublisher)
+//            .map { $0 && $1 } // Кнопка доступна, если оба поля заполнены
+//            .receive(on: RunLoop.main) // Обновляем UI в главном потоке
+//            .sink { [weak self] isEnabled in
+//                self?.authButton.isEnabled = isEnabled
+//                self?.authButton.alpha = isEnabled ? 1.0 : 0.8 // Визуальный эффект
+//            }
+//            .store(in: &cancellables)
+//    }
+
     
     @objc private func authButtonTapped() {
         guard let email = emailTextField.text, !email.isEmpty,
@@ -182,6 +212,12 @@ class AuthScreenVC: UIViewController {
         present(registerVC, animated: true, completion: nil)
     }
 
+    @objc private func showForgotPasswordScreen() {
+        let forgotPasswordVC = ForgotPasswordScreenVC()
+        modalPresentationStyle = .fullScreen
+        present(forgotPasswordVC, animated: true, completion: nil)
+    }
+    
     private func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

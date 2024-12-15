@@ -42,13 +42,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             secondTabVC = authScreenVC
         }
 
-        // Третий таб: Настройки
+        let feedbackScreenVC = FeedbackScreenVC()
+        feedbackScreenVC.tabBarItem.image = UIImage(systemName: "envelope")
+        feedbackScreenVC.tabBarItem.selectedImage = UIImage(systemName: "envelope.fill")
+        
+        // Четвертый таб: Настройки
         let settingsScreenVC = SettingsScreenVC()
         settingsScreenVC.tabBarItem.image = UIImage(systemName: "gearshape")
         settingsScreenVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
 
         // Устанавливаем контроллеры таббара
-        tabBarController.viewControllers = [newsScreenVC, secondTabVC, settingsScreenVC]
+        tabBarController.viewControllers = [newsScreenVC, secondTabVC, feedbackScreenVC, settingsScreenVC]
         
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
