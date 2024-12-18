@@ -167,6 +167,7 @@
 				DEVELOPMENT_TEAM = D5L5LFMXL5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "students_nshg_application/Application Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "НШГ Липецк";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -199,6 +200,7 @@
 				DEVELOPMENT_TEAM = D5L5LFMXL5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "students_nshg_application/Application Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "НШГ Липецк";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

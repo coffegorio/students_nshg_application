@@ -26,10 +26,10 @@ class ForgotPasswordScreenVC: UIViewController {
         fontWeight: .bold
     )
     private let subtitleLabel = CustomLabel(
-        text: "Введите вашу электронную почту, и мы отправим вам инструкции для восстановления пароля.",
+        text: "Забыли пароль? Ничего страшного! Введите ниже свою электронную почту, и мы пришлем вам ссылку на воостановление пароля!",
         textColor: Styles.Colors.appThemeBlackColor,
         textAlignment: .left,
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: .regular
     )
     private let emailTextField = CustomTextField(

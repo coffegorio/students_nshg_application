@@ -68,6 +68,8 @@ class AuthService {
                 completion(error)
                 return
             } else {
+                // Отправляем уведомление, что пользователь авторизован
+                NotificationCenter.default.post(name: .userLoggedInStatusChanged, object: nil)
                 completion(nil)
             }
         }
@@ -77,6 +79,8 @@ class AuthService {
     public func signOut(completion: @escaping (Error?) -> Void) {
         do {
             try Auth.auth().signOut()
+            // Отправляем уведомление, что пользователь вышел
+            NotificationCenter.default.post(name: .userLoggedInStatusChanged, object: nil)
             completion(nil)
         } catch let error {
             completion(error)
@@ -119,3 +123,4 @@ class AuthService {
     }
     
 }
+
